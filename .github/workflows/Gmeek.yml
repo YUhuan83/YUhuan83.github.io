@@ -55,6 +55,17 @@ jobs:
           cp -a /opt/Gmeek/backup ${{ github.workspace }} 
           cp /opt/Gmeek/blogBase.json ${{ github.workspace }} 
           
+      - name: Inject custom CSS/JS
+        run: |
+          for f in docs/*.html; do
+            sed -i 's|</head>|<link rel="stylesheet" href="custom.css">\n</head>|' "$f"
+            sed -i 's|</body>|<script src="custom.js"></script>\n</body>|' "$f"
+          done
+          for f in docs/post/*.html; do
+            sed -i 's|</head>|<link rel="stylesheet" href="../custom.css">\n</head>|' "$f"
+            sed -i 's|</body>|<script src="../custom.js"></script>\n</body>|' "$f"
+          done
+
       - name: update html
         run: |
           git config --local user.email "$(jq -r ".email" config.json)"

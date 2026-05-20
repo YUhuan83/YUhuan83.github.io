@@ -1,0 +1,51 @@
+<h2>背景图片布局方案</h2>
+<p class="subtitle">图片如何融入博客页面？搭配玻璃质感卡片呈现内容</p>
+
+<div class="cards">
+  <div class="card" data-choice="fullscreen" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:linear-gradient(135deg,#87CEEB 0%,#4A90D9 50%,#2c3e50 100%);height:140px;display:flex;align-items:center;justify-content:center;position:relative;">
+        <div style="position:absolute;inset:0;opacity:0.3;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2225%22 cy=%2230%22 r=%2220%22 fill=%22white%22 opacity=%220.15%22/><circle cx=%2275%22 cy=%2270%22 r=%2225%22 fill=%22white%22 opacity=%220.1%22/></svg>') center/cover;"></div>
+        <div style="z-index:1;text-align:center;">
+          <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.25);border-radius:12px;padding:16px 24px;color:white;font-weight:bold;">博客内容卡片</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 全屏背景覆盖</h3>
+      <p>图片 fixed 铺满整个背景，内容以玻璃卡片形式浮在背景上。滚动时背景不动（视差效果）。最有沉浸感，适合展示型博客。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="hero-top" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:linear-gradient(180deg,#87CEEB 0%,#4A90D9 60%,#f0f4f8 100%);height:140px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:80px;opacity:0.3;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22white%22 opacity=%220.2%22/></svg>') center/cover;"></div>
+        <div style="height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;">
+          <div style="font-size:12px;color:white;text-align:center;">博客标题区（背景图）</div>
+        </div>
+      </div>
+      <div style="background:white;height:50px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;">白底内容区</div>
+    </div>
+    <div class="card-body">
+      <h3>B. 顶部横幅 + 白底内容</h3>
+      <p>图片仅在页面顶部（header）区域展示，下方内容区为白色/浅色背景。传统博客风格，图片作为氛围点缀。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="glass-blend" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);height:140px;display:flex;align-items:center;justify-content:center;position:relative;">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(135,206,235,0.3),rgba(74,144,217,0.2));"></div>
+        <div style="z-index:1;display:flex;flex-direction:column;gap:8px;width:80%;">
+          <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px;color:white;font-size:11px;">标题 & 导航</div>
+          <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:20px;color:white;font-size:11px;">文章列表 & 内容</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 暗色天蓝 + 全玻璃融合</h3>
+      <p>深色天蓝渐变底色，图片作为叠加纹理。所有 UI 元素都使用玻璃质感。更现代、更有个性，适合暗色主题偏好。</p>
+    </div>
+  </div>
+</div>

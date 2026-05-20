@@ -1,0 +1,119 @@
+<h2>实现方案</h2>
+<p class="subtitle">如何在不破坏 Gmeek 自动构建的前提下注入自定义设计</p>
+
+<div class="section">
+  <h3>核心问题</h3>
+  <p>Gmeek 每次构建会重新生成所有 HTML 文件（index.html、tag.html、post/*.html），直接修改这些文件会在下次 Issue 触发构建时被覆盖。需要一种机制让自定义样式在每次构建后<b>自动重新注入</b>。</p>
+</div>
+
+<div class="section">
+  <h3>方案：独立资源文件 + Workflow 注入</h3>
+  <div style="background:rgba(0,0,0,0.05);border-radius:8px;padding:16px;margin-bottom:12px;">
+    <pre style="margin:0;font-size:13px;line-height:1.8;"><b>仓库结构：</b>
+docs/
+├── index.html          ← Gmeek 生成
+├── tag.html            ← Gmeek 生成
+├── post/               ← Gmeek 生成
+│   ├── *.html
+├── <b style="color:#4A90D9;">custom.css</b>       ← 我们创建，<b>不会被覆盖</b>
+└── <b style="color:#4A90D9;">custom.js</b>        ← 我们创建，<b>不会被覆盖</b>
+
+<b>构建流程（修改 Gmeek.yml）：</b>
+1. Gmeek.py 生成 HTML（照常）
+2. <b style="color:#4A90D9;">新增步骤</b>：Python 脚本在每个 HTML 的 &lt;head&gt; 中
+   插入 &lt;link href="custom.css"&gt; 和 &lt;script src="custom.js"&gt;
+3. 提交推送（照常）
+
+<b>结果：</b>每次自动构建后，自定义样式自动注入 ✅</pre>
+  </div>
+</div>
+
+<div class="section">
+  <h3>custom.css 内容规划（约 200 行）</h3>
+  <table style="width:100%;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">CSS 变量 & 主题色</td>
+      <td style="padding:6px;color:#666;">--sky-blue, --glass-bg, --glass-border 等</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">背景 & 玻璃效果</td>
+      <td style="padding:6px;color:#666;">body 背景图 + backdrop-filter 玻璃卡片</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">Header / Footer</td>
+      <td style="padding:6px;color:#666;">玻璃质感导航栏，天蓝色强调</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">文章列表 & 内容</td>
+      <td style="padding:6px;color:#666;">玻璃卡片样式，SideNav 重写</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">音乐播放器</td>
+      <td style="padding:6px;color:#666;">底部固定条的布局和样式</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">响应式 @media</td>
+      <td style="padding:6px;color:#666;">≤600px / 600-900px / ≥900px 三断点</td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <h3>custom.js 内容规划（约 60 行）</h3>
+  <table style="width:100%;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">音乐播放器控制</td>
+      <td style="padding:6px;color:#666;">播放/暂停切换，进度条更新，Audio API</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">动态创建播放条 DOM</td>
+      <td style="padding:6px;color:#666;">JS 注入底部播放条 HTML（不修改 Gmeek 模板）</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:6px;">图片/音乐链接切换</td>
+      <td style="padding:6px;color:#666;">本地 localhost 调试 → GitHub raw 链接</td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <h3>链接切换策略</h3>
+  <pre style="background:rgba(0,0,0,0.05);border-radius:8px;padding:12px;font-size:13px;">
+// custom.js 顶部配置（调试完成后你只需改这两行）
+const ASSETS = {
+  bgImage:  "8478e062921da586a4e88ef04e1cdde7.jpg",  // ← 本地调试
+  audio:    "澤野弘之_mpi-theDOGS.mp3"              // ← 本地调试
+};
+
+// 切换为 GitHub 链接后：
+// const ASSETS = {
+//   bgImage:  "https://raw.githubusercontent.com/YUhuan83/.../8478e062921da586a4e88ef04e1cdde7.jpg",
+//   audio:    "https://raw.githubusercontent.com/YUhuan83/.../澤野弘之_mpi-theDOGS.mp3"
+// };</pre>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">需要修改的文件</div>
+    <div class="mockup-body">
+      <ul style="margin:0;padding-left:20px;line-height:2;">
+        <li><b>新增</b> docs/custom.css</li>
+        <li><b>新增</b> docs/custom.js</li>
+        <li><b>修改</b> .github/workflows/Gmeek.yml</li>
+        <li>不修改任何 Gmeek 生成的 HTML</li>
+        <li>不修改 config.json / blogBase.json</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">本地调试方式</div>
+    <div class="mockup-body">
+      <ul style="margin:0;padding-left:20px;line-height:2;">
+        <li>直接用浏览器打开 docs/index.html</li>
+        <li>custom.css/js 使用相对路径自动加载</li>
+        <li>图片/音频用本地文件名</li>
+        <li>调试完成后替换为 GitHub 链接</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<h2>音乐播放按钮设计</h2>
+<p class="subtitle">播放器按钮的位置、样式与交互方式</p>
+
+<div class="section">
+  <h3>位置选择</h3>
+</div>
+
+<div class="cards">
+  <div class="card" data-choice="floating-bottom-right" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%);height:140px;position:relative;">
+        <div style="position:absolute;bottom:16px;right:16px;display:flex;gap:8px;align-items:center;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(135,206,235,0.25);backdrop-filter:blur(12px);border:1px solid rgba(135,206,235,0.35);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+            <div style="color:white;font-size:18px;">&#9654;</div>
+          </div>
+        </div>
+        <div style="position:absolute;bottom:50px;right:20px;font-size:10px;color:rgba(255,255,255,0.6);">浮动按钮</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 右下角浮动按钮</h3>
+      <p>固定在视口右下角，始终可见。点击展开/播放。不占内容空间，适合移动端操作。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="header-bar" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%);height:140px;position:relative;">
+        <div style="display:flex;align-items:center;padding:12px 16px;gap:12px;background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.1);">
+          <div style="font-size:10px;color:rgba(255,255,255,0.8);">宇将军</div>
+          <div style="flex:1;"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(135,206,235,0.25);border:1px solid rgba(135,206,235,0.35);display:flex;align-items:center;justify-content:center;">
+            <div style="color:white;font-size:12px;">&#9654;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 顶部导航栏内嵌</h3>
+      <p>放在页面 header 导航区域。更低调，不会遮挡内容。但移动端可能太拥挤。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="bottom-bar" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%);height:140px;position:relative;">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.1);padding:8px 16px;display:flex;align-items:center;gap:8px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(135,206,235,0.3);border:1px solid rgba(135,206,235,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="color:white;font-size:14px;">&#9654;</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+            <div style="height:3px;background:rgba(255,255,255,0.2);border-radius:2px;width:60%;"></div>
+            <div style="font-size:8px;color:rgba(255,255,255,0.5);">澤野弘之 - theDOGS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 底部迷你播放条</h3>
+      <p>固定底部，显示歌曲信息 + 播放按钮 + 进度条。更像完整的音乐播放器体验。移动端拇指触达容易。</p>
+    </div>
+  </div>
+</div>

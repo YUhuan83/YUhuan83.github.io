@@ -1,0 +1,113 @@
+<h2>完整设计方案预览</h2>
+<p class="subtitle">暗色天蓝 + 全玻璃融合 + 底部播放条</p>
+
+<div class="section">
+  <h3>桌面端效果</h3>
+  <div class="mockup">
+    <div class="mockup-header">桌面端 (≥900px) — 博客首页</div>
+    <div class="mockup-body">
+      <div style="background:linear-gradient(135deg,#0a1628 0%,#0d2137 30%,#132742 60%,#1a3a5c 100%);min-height:320px;position:relative;overflow:hidden;border-radius:8px;">
+        <!-- 背景装饰 -->
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(135,206,235,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,180,220,0.06) 0%,transparent 50%);"></div>
+        <!-- 内容区 -->
+        <div style="position:relative;z-index:1;padding:20px;">
+          <!-- Header -->
+          <div style="background:rgba(135,206,235,0.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(135,206,235,0.15);border-radius:14px;padding:14px 20px;display:flex;align-items:center;margin-bottom:16px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(135,206,235,0.2);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">宇</div>
+            <span style="color:white;font-size:18px;font-weight:bold;margin-left:12px;">宇将军</span>
+            <div style="flex:1;"></div>
+            <div style="display:flex;gap:8px;">
+              <div style="padding:6px 14px;border-radius:8px;background:rgba(135,206,235,0.12);color:rgba(255,255,255,0.7);font-size:12px;">标签</div>
+              <div style="padding:6px 14px;border-radius:8px;background:rgba(135,206,235,0.12);color:rgba(255,255,255,0.7);font-size:12px;">RSS</div>
+            </div>
+          </div>
+          <!-- 文章列表 -->
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="background:rgba(135,206,235,0.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(135,206,235,0.12);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.9);">关于python的一些感受</span>
+              <span style="background:rgba(135,206,235,0.2);padding:3px 10px;border-radius:6px;color:rgba(255,255,255,0.7);font-size:11px;">2026-05-11</span>
+            </div>
+            <div style="background:rgba(135,206,235,0.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(135,206,235,0.12);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.9);">一些感想</span>
+              <span style="background:rgba(135,206,235,0.2);padding:3px 10px;border-radius:6px;color:rgba(255,255,255,0.7);font-size:11px;">2026-05-11</span>
+            </div>
+            <div style="background:rgba(135,206,235,0.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(135,206,235,0.12);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="color:rgba(255,255,255,0.9);">第一次写</span>
+              <span style="background:rgba(135,206,235,0.2);padding:3px 10px;border-radius:6px;color:rgba(255,255,255,0.7);font-size:11px;">2026-05-09</span>
+            </div>
+          </div>
+        </div>
+        <!-- 底部播放条 -->
+        <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(10,22,40,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(135,206,235,0.2);padding:10px 20px;display:flex;align-items:center;gap:12px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:rgba(135,206,235,0.2);border:1px solid rgba(135,206,235,0.35);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+            <span style="color:white;font-size:14px;">&#9654;</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+            <div style="height:3px;background:rgba(255,255,255,0.15);border-radius:2px;overflow:hidden;">
+              <div style="height:100%;width:30%;background:linear-gradient(90deg,#87CEEB,#4A90D9);border-radius:2px;"></div>
+            </div>
+            <span style="color:rgba(255,255,255,0.5);font-size:10px;">澤野弘之 - theDOGS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>移动端效果 (≤600px)</h3>
+  <div class="mockup">
+    <div class="mockup-header">手机端 — 窄屏自适应</div>
+    <div class="mockup-body">
+      <div style="background:linear-gradient(135deg,#0a1628 0%,#132742 100%);min-height:280px;position:relative;overflow:hidden;border-radius:8px;max-width:320px;margin:0 auto;">
+        <div style="position:relative;z-index:1;padding:12px;">
+          <div style="background:rgba(135,206,235,0.08);backdrop-filter:blur(20px);border:1px solid rgba(135,206,235,0.15);border-radius:10px;padding:10px 14px;display:flex;align-items:center;margin-bottom:10px;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(135,206,235,0.2);display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:bold;">宇</div>
+            <span style="color:white;font-size:15px;font-weight:bold;margin-left:8px;">宇将军</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="background:rgba(135,206,235,0.06);backdrop-filter:blur(16px);border:1px solid rgba(135,206,235,0.12);border-radius:10px;padding:10px 14px;color:rgba(255,255,255,0.9);font-size:12px;">关于python的一些感受</div>
+            <div style="background:rgba(135,206,235,0.06);backdrop-filter:blur(16px);border:1px solid rgba(135,206,235,0.12);border-radius:10px;padding:10px 14px;color:rgba(255,255,255,0.9);font-size:12px;">一些感想</div>
+            <div style="background:rgba(135,206,235,0.06);backdrop-filter:blur(16px);border:1px solid rgba(135,206,235,0.12);border-radius:10px;padding:10px 14px;color:rgba(255,255,255,0.9);font-size:12px;">第一次写</div>
+          </div>
+        </div>
+        <!-- 播放条 -->
+        <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(10,22,40,0.9);backdrop-filter:blur(20px);border-top:1px solid rgba(135,206,235,0.2);padding:8px 12px;display:flex;align-items:center;gap:10px;">
+          <div style="width:34px;height:34px;border-radius:50%;background:rgba(135,206,235,0.2);border:1px solid rgba(135,206,235,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="color:white;font-size:12px;">&#9654;</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="height:3px;background:rgba(255,255,255,0.15);border-radius:2px;"><div style="height:100%;width:30%;background:linear-gradient(90deg,#87CEEB,#4A90D9);border-radius:2px;"></div></div>
+            <span style="color:rgba(255,255,255,0.4);font-size:9px;">澤野弘之 - theDOGS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>设计要点总结</h3>
+  <table style="width:100%;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;font-weight:bold;">主题色</td>
+      <td style="padding:8px;">天蓝渐变 <code style="background:linear-gradient(90deg,#87CEEB,#4A90D9);padding:2px 8px;border-radius:4px;color:white;">#87CEEB → #4A90D9</code></td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;font-weight:bold;">背景</td>
+      <td style="padding:8px;">深蓝暗色底 (#0a1628) + 用户图片叠加纹理 + 径向光晕</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;font-weight:bold;">玻璃效果</td>
+      <td style="padding:8px;"><code>backdrop-filter: blur(20px)</code> + 半透明边框 + 微光背景</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;font-weight:bold;">音乐播放器</td>
+      <td style="padding:8px;">固定底部条：播放按钮 + 进度条 + 歌名</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;font-weight:bold;">响应式</td>
+      <td style="padding:8px;">桌面 ≥900px / 平板 600-900px / 手机 ≤600px, 三断点</td>
+    </tr>
+  </table>
+</div>
