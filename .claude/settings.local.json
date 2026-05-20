@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(Get-ChildItem -Path \"D:\\\\vscode\\\\VsCodeWork\\\\YUhuan83.github.io\" -Depth 0)",
+      "Bash(Format-Table Name, Mode)",
+      "Bash(bash *)",
+      "PowerShell(ffmpeg *)"
+    ]
+  }
+}

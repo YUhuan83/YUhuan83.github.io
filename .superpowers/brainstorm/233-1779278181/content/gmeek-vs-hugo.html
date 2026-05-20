@@ -1,0 +1,80 @@
+<h2>Gmeek vs Hugo：是否需要更换框架？</h2>
+<p class="subtitle">分析两个框架在自定义背景、音乐播放器、玻璃质感主题方面的差异</p>
+
+<div class="section">
+  <h3>当前架构：Gmeek</h3>
+  <p>Gmeek 通过 GitHub Actions 从 Issues 生成静态 HTML。每个页面是<b>完全独立的 HTML 文件</b>，CSS/JS 全部内联。Gmeek.py 脚本生成时会在 <code>&lt;head&gt;</code> 和 <code>&lt;style&gt;</code> 中插入内容。</p>
+  <p>自定义方式：在 <code>blogBase.json</code> 中配置 <code>head</code>、<code>style</code>、<code>script</code> 等字段，Gmeek 构建时将这些内容注入每个页面。</p>
+</div>
+
+<div class="section">
+  <h3>核心问题：实现你的目标需要什么？</h3>
+  <table style="width:100%;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <th style="text-align:left;padding:8px;">需求</th>
+      <th style="text-align:center;padding:8px;">Gmeek 能否实现</th>
+      <th style="text-align:center;padding:8px;">Hugo 能否实现</th>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;">全局背景图片</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">通过 style 字段注入 CSS</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">模板中直接编写</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;">玻璃质感 (glassmorphism)</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">纯 CSS 实现，注入即可</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">纯 CSS 实现</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;">音乐播放器按钮</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">script 字段注入 JS + HTML</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">模板 partial 引入</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;">响应式布局</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">CSS media queries</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">CSS media queries</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;">主题色 (天蓝)</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">覆盖 Primer CSS 变量</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">模板变量 + CSS</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--borderColor-muted)">
+      <td style="padding:8px;">Issue 自动构建</td>
+      <td style="text-align:center;padding:8px;color:#1f883d;">原生支持</td>
+      <td style="text-align:center;padding:8px;color:#cf222e;">需额外配置</td>
+    </tr>
+  </table>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="stay-gmeek" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>保留 Gmeek，通过注入自定义</h3>
+      <p>利用 blogBase.json 的 head/style/script 字段注入 CSS 和 JS，实现所有前端效果。保持 Issue → 自动构建的工作流不变。</p>
+    </div>
+  </div>
+  <div class="option" data-choice="switch-hugo" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>迁移到 Hugo</h3>
+      <p>完全自定义模板系统，更灵活但需要：迁移所有文章、配置 GitHub Actions 构建 Hugo、放弃 Issue 撰写方式。</p>
+    </div>
+  </div>
+</div>
+
+<div class="pros-cons" style="margin-top:16px;">
+  <div class="pros"><h4>方案 A 优势</h4><ul>
+    <li>零迁移成本，5 分钟即可开始写 CSS</li>
+    <li>保持现有的 Issue 写文章流程</li>
+    <li>所有前端效果（背景、glass、音乐）纯 CSS/JS 即可实现</li>
+    <li>GitHub Actions 自动构建已配置好</li>
+  </ul></div>
+  <div class="cons"><h4>方案 A 局限</h4><ul>
+    <li>CSS/JS 通过 JSON 字段注入，修改需编辑 JSON（需注意转义）</li>
+    <li>模板结构由 Gmeek 控制，无法改变 HTML 骨架</li>
+    <li>Gmeek 生成的每页 HTML 结构固定</li>
+  </ul></div>
+</div>
