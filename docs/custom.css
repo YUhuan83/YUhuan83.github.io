@@ -12,8 +12,9 @@
 
 /* ===== Body & Background ===== */
 body {
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.8)) !important;
-  background-color: #0a0a0a !important;
+  background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)), var(--bg-image) no-repeat 50% 0 !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
   color: var(--text-primary) !important;
   max-width: 1000px !important;
   padding: 20px !important;
@@ -24,21 +25,6 @@ body {
   line-height: 1.8 !important;
 }
 
-/* ===== Decorative Background Image ===== */
-#bg-deco {
-  position: fixed;
-  left: 20px;
-  bottom: 100px;
-  width: 180px;
-  height: 270px;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.15;
-  z-index: 999;
-  pointer-events: none;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
 
 body::before {
   content: '';
@@ -357,8 +343,9 @@ body::before {
 /* ===== Light Mode Overrides ===== */
 [data-color-mode="light"] body,
 [data-color-mode="light"][data-light-theme="light"] body {
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.8)) !important;
-  background-color: #0a0a0a !important;
+  background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)), var(--bg-image) no-repeat 50% 0 !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
   color: var(--text-primary) !important;
 }
 

@@ -1,12 +1,8 @@
-// Decorative background image
+// Background image — fills page behind semi-transparent content cards
 (function() {
   var isPost = window.location.pathname.indexOf('/post/') !== -1;
   var BASE = isPost ? '../..' : '..';
-
-  var img = document.createElement('div');
-  img.id = 'bg-deco';
-  img.style.backgroundImage = 'url(' + BASE + '/8478e062921da586a4e88ef04e1cdde7.jpg)';
-  document.body.appendChild(img);
+  document.documentElement.style.setProperty('--bg-image', 'url(' + BASE + '/8478e062921da586a4e88ef04e1cdde7.jpg)');
 })();
 
 // Music player
