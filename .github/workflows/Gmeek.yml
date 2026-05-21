@@ -46,6 +46,11 @@ jobs:
           pip install --upgrade pip
           pip install -r /opt/Gmeek/requirements.txt
 
+      - name: Backup custom files
+        run: |
+          cp docs/custom.css /tmp/custom.css 2>/dev/null || echo "no custom.css to backup"
+          cp docs/custom.js /tmp/custom.js 2>/dev/null || echo "no custom.js to backup"
+
       - name: Generate new html
         run: |
           cp -r ./* /opt/Gmeek/
@@ -55,6 +60,11 @@ jobs:
           cp -a /opt/Gmeek/backup ${{ github.workspace }} 
           cp /opt/Gmeek/blogBase.json ${{ github.workspace }} 
           
+      - name: Restore custom files
+        run: |
+          cp /tmp/custom.css docs/custom.css 2>/dev/null || echo "no custom.css to restore"
+          cp /tmp/custom.js docs/custom.js 2>/dev/null || echo "no custom.js to restore"
+
       - name: Inject custom CSS/JS
         run: |
           for f in docs/*.html; do
