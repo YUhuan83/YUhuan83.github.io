@@ -24,6 +24,22 @@ body {
   line-height: 1.8 !important;
 }
 
+/* ===== Decorative Background Image ===== */
+#bg-deco {
+  position: fixed;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
 body::before {
   content: '';
   position: fixed;

@@ -1,3 +1,14 @@
+// Decorative background image
+(function() {
+  var isPost = window.location.pathname.indexOf('/post/') !== -1;
+  var BASE = isPost ? '../..' : '..';
+
+  var img = document.createElement('div');
+  img.id = 'bg-deco';
+  img.style.backgroundImage = 'url(' + BASE + '/8478e062921da586a4e88ef04e1cdde7.jpg)';
+  document.body.appendChild(img);
+})();
+
 // Music player
 (function() {
   var isPost = window.location.pathname.indexOf('/post/') !== -1;
