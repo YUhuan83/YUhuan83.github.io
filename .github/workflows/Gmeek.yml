@@ -48,8 +48,10 @@ jobs:
 
       - name: Backup custom files
         run: |
-          cp docs/custom.css /tmp/custom.css 2>/dev/null || echo "no custom.css to backup"
-          cp docs/custom.js /tmp/custom.js 2>/dev/null || echo "no custom.js to backup"
+          cp docs/custom.css /tmp/custom.css 2>/dev/null || echo "no custom.css"
+          cp docs/custom.js /tmp/custom.js 2>/dev/null || echo "no custom.js"
+          cp docs/*.jpg /tmp/ 2>/dev/null || echo "no jpg"
+          cp docs/*.mp3 /tmp/ 2>/dev/null || echo "no mp3"
 
       - name: Generate new html
         run: |
@@ -62,8 +64,10 @@ jobs:
           
       - name: Restore custom files
         run: |
-          cp /tmp/custom.css docs/custom.css 2>/dev/null || echo "no custom.css to restore"
-          cp /tmp/custom.js docs/custom.js 2>/dev/null || echo "no custom.js to restore"
+          cp /tmp/custom.css docs/custom.css 2>/dev/null || echo "no custom.css"
+          cp /tmp/custom.js docs/custom.js 2>/dev/null || echo "no custom.js"
+          cp /tmp/*.jpg docs/ 2>/dev/null || echo "no jpg"
+          cp /tmp/*.mp3 docs/ 2>/dev/null || echo "no mp3"
 
       - name: Inject custom CSS/JS
         run: |

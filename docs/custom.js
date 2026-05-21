@@ -9,8 +9,8 @@
   var isPost = window.location.pathname.indexOf('/post/') !== -1;
   var BASE = isPost ? '../..' : '..';
   window.ASSETS = {
-    bgImage: 'https://raw.githubusercontent.com/YUhuan83/YUhuan83.github.io/main/8478e062921da586a4e88ef04e1cdde7.jpg',
-    audio: 'https://raw.githubusercontent.com/YUhuan83/YUhuan83.github.io/main/%E6%BE%A4%E9%87%8E%E5%BC%98%E4%B9%8B_mpi-theDOGS.mp3'
+    bgImage: BASE + '/8478e062921da586a4e88ef04e1cdde7.jpg',
+    audio: BASE + '/澤野弘之_mpi-theDOGS.mp3'
   };
 })();
 
